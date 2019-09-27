@@ -1,14 +1,11 @@
 package com.app.model;
 
-import java.util.List;
-
-public class DepartmentModel {
-
+public class Department {
     private Integer id;
 
     private String name;
 
-    private List<DepartmentModel> childs;
+    private Integer parentId;
 
     public Integer getId() {
         return id;
@@ -23,14 +20,14 @@ public class DepartmentModel {
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.name = name == null ? null : name.trim();
     }
 
-    public List<DepartmentModel> getChilds() {
-        return childs;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setChilds(List<DepartmentModel> childs) {
-        this.childs = childs;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 }

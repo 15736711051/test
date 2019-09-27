@@ -1,10 +1,15 @@
 package com.app;
 
+import com.alibaba.fastjson.JSON;
+import com.app.mapper.DepartmentMapper;
 import com.app.mapper.DeptMapper;
+import com.app.model.Department;
+import com.app.model.DepartmentModel;
 import com.app.model.Dept;
 import com.app.model.Employee;
 import com.app.service.testOne.DeptService;
 import com.app.service.testOne.EmpolyeeService;
+import com.app.service.testTwo.DepartmentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +25,10 @@ public class AppApplicationTests {
     private EmpolyeeService empolyeeService;
     @Autowired
     private DeptService deptService;
+    @Autowired
+    private DepartmentService departmentService;
+    @Autowired
+    private DepartmentMapper departmentMapper;
 
     @Test
     public void testAdd() {
@@ -53,6 +62,21 @@ public class AppApplicationTests {
     }
 
 
+    /**
+    * @Description: 方法二
+    * @author:      qsy
+    * @param:
+    * @return:
+    * @exception:
+    * @date:        2019/9/27 21:34
+    */
+
+    @Test
+    public void testQueryDeptsTwo(){
+        List<Department> departments = departmentMapper.selectTopLevel();
+        List<DepartmentModel> models = departmentService.process(departments);
+        System.out.println(JSON.toJSONString(models));
+    }
 
 
 
